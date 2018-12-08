@@ -17,10 +17,13 @@ params = {
     'port': 5432
 }
 
+#Homepage
 @app.route("/", methods=["GET"])
 def index():
 
     return render_template('homepage.html')
+
+
 
 #Use flask to create a page that displays all rentals in
 #chronological order and info about them by pulling
@@ -43,6 +46,7 @@ def all_interactions():
     return render_template("all_interactions.html", info=R, top='')
 
 
+#Create a graph of the rental counts and amount paid to the establishment over time
 @app.route('/fig/')
 def hp_graph():
 
@@ -118,11 +122,13 @@ def customer(id):
         colnames = [desc[0] for desc in c.description]
         R = c.fetchall()
         conn.close()
+        #Replace None with the string 'None'
         R = [list(['None' if v is None else v for v in d]) for d in R]
     except Exception as e:
         print(e)
     return render_template("all_interactions.html", info=R, top = top)
 
+#Returns the ten most frequently rented movies and genres
 @app.route('/most_frequent')
 def most_freq():
     query = """SELECT {0}, COUNT(r.inventory_id) from rental r INNER JOIN inventory i ON i.inventory_id = r.inventory_id INNER JOIN film f on i.film_id = f.film_id INNER JOIN film_category fc on f.film_id = fc.film_id INNER JOIN category k on k.category_id = fc.category_id
@@ -144,10 +150,12 @@ def most_freq():
             results.append([])
             print(e)
 
+#Creates a search page where you can search by title, genre, or user
 @app.route('/search')
 def search():
     return render_template('search.html')
 
+#Returns a page of all movies in the inventory of a specific genre
 @app.route('/genre/<g>')
 def get_genre(g):
     g = g.lower().capitalize()
@@ -168,6 +176,8 @@ def get_genre(g):
         R=[]
     return render_template('genre_list.html', info=R, g=g)
 
+
+#Takes in a movie title and returns data about the movie to be posted on the same page
 @app.route('/movie_details', methods=['GET', 'POST'])
 def movie():
 
