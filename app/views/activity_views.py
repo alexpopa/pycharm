@@ -10,7 +10,7 @@ import base64
 
 #Database parameters
 params = {
-    'user': "alexis",
+    'user': "ubuntu",
     'password': "password",
     'dbname': 'dvdrentals',
     'host': 'ec2-18-222-129-9.us-east-2.compute.amazonaws.com',
