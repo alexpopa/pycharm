@@ -10,7 +10,7 @@ import base64
 
 #Database parameters
 params = {
-    'user': "ubuntu",
+    'user': "alexis",
     'password': "password",
     'dbname': 'dvdrentals',
     'host': 'localhost',
