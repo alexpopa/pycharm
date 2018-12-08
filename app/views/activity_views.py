@@ -13,7 +13,7 @@ params = {
     'user': "alexis",
     'password': "password",
     'dbname': 'dvdrentals',
-    'host': '18.222.129.9',
+    'host': '127.0.0.1',
     'port': 5432
 }
 
