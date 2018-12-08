@@ -14,7 +14,7 @@ params = {
     'password': "password",
     'dbname': 'dvdrentals',
     'host': '0.0.0.0',
-    'port': 22
+    'port': 5432
 }
 
 @app.route("/", methods=["GET"])
