@@ -13,7 +13,7 @@ params = {
     'user': "alexis",
     'password': "password",
     'dbname': 'dvdrentals',
-    'host': 'ec2-18-222-129-9.us-east-2.compute.amazonaws.com',
+    'host': 'localhost',
     'port': 5432
 }
 
