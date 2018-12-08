@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies By Genre</title>
+
+    <style>
+        #top {
+            height:70px;
+            font-size:30px;
+            text-align:center;
+            padding-top:20px;
+        }
+        .topn{width:33%; float:left; text-align:center; background-color:black;color:white; border:0;
+        height:30px; font-size:16px;}
+
+        #table {
+            width:96%;
+            margin:auto;
+        }
+    </style>
+</head>
+
+<body>
+<div id="top">DVD Rentals</div>
+<div id="navbar" style="width:100%;">
+    <button class="topn" onclick = "location.href = '/'" style="margin-right:.5%;">Home</button>
+    <button class="topn" onclick = "location.href = '/all_interactions'" style="margin-right:.5%;">All Rentals</button>
+    <button class="topn" onclick = "location.href = '/search'">Search</button>
+</div>
+
+<h2 style="margin-top:4%;">{{g}} Movies</h2>
+
+<table id="table"></table>
+
+<script>
+    logs = {{info|safe}}
+    console.log(logs)
+
+    var row = document.getElementById("table").insertRow();
+    cell0 = row.insertCell(0);
+    cell1 = row.insertCell(1);
+    cell2 = row.insertCell(2);
+    cell3 = row.insertCell(3);
+    cell4 = row.insertCell(4);
+
+    cell0.innerHTML = '<h3>Title</h3>';
+    cell1.innerHTML = '<h3>Description</h3>';
+    cell2.innerHTML = '<h3>Title</h3>';
+    cell3.innerHTML = '<h3>Rating</h3>';
+    cell4.innerHTML = '<h3>Rental Rate</h3>';
+
+
+for (i =0; i<logs.length; i+=1)  {
+    var row = document.getElementById("table").insertRow();
+    cell0 = row.insertCell(0);
+    cell1 = row.insertCell(1);
+    cell2 = row.insertCell(2);
+    cell3 = row.insertCell(3);
+    cell4 = row.insertCell(4);
+    cell0.innerHTML = logs[i][0];
+    cell1.innerHTML = logs[i][1];
+    cell2.innerHTML = logs[i][2];
+    cell3.innerHTML = logs[i][3];
+    cell4.innerHTML = logs[i][4];
+}
+
+</script>
+
+</body>
+</html>

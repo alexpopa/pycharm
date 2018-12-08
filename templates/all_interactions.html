@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    {{head|safe}}
+  <head>
+    <title>Interactions</title>
+    <script>
+
+    var info = {{info|safe}};
+    console.log("info: ", info);
+
+	</script>
+	<!--
+	<link rel="stylesheet" type="text/css" href="./static/css/session_sentiment.css?v=1" />
+	-->
+
+	<style>
+	    table {width:98%; margin:auto; font-size:16px;}
+
+        h2, h3 {
+          margin-bottom:0;
+          margin-left:40px;
+        }
+
+        h3 {
+          font-size:20px;
+        }
+
+        td {
+            padding-left:2px;
+        }
+
+
+        .aud {
+            background-color: white;
+            border: 0;
+            color: blue;
+            text-decoration: underline;
+
+        }
+
+        #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: red;
+          color: white;
+          cursor: pointer;
+          padding:4px 18px 4px 18px;
+          border-radius: 4px;
+        }
+
+        #myBtn:hover {
+          background-color: #808080;
+        }
+
+
+        #top {
+            height:70px;
+            font-size:30px;
+            text-align:center;
+            padding-top:20px;
+        }
+        .topn{width:33%; float:left; text-align:center; background-color:black;color:white; border:0;
+        height:30px; font-size:16px;border:1px;}
+    </style>
+
+  </head>
+
+  <body>
+
+        <div id="top">DVD Rentals</div>
+        <div id="navbar" style="width:100%;">
+    <button class="topn" onclick = "location.href = '/'" style="margin-right:.5%;">Home</button>
+    <button class="topn" onclick = "location.href = '/all_interactions'" style="margin-right:.5%;">All Rentals</button>
+    <button class="topn" onclick = "location.href = '/search'">Search </button>
+</div>
+
+
+        <a style="float:right; margin-right:2%;font-size:16px;" href="#bottom">Jump To Bottom</a>
+        {{top|safe}}
+		<table id="table"></table>
+        <div id="bottom"></div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<script>
+		        var logs = {{info|safe}};
+		        console.log(logs)
+		        var row = document.getElementById("table").insertRow();
+		            cell0 = row.insertCell(0);
+		            cell1 = row.insertCell(1);
+		            cell2 = row.insertCell(2);
+		            cell3 = row.insertCell(3);
+		            cell4 = row.insertCell(4);
+		            cell5 = row.insertCell(5);
+		            cell6 = row.insertCell(6);
+		            cell7 = row.insertCell(7);
+		            cell0.innerHTML = '<h3>Rental ID</h3>';
+		            cell1.innerHTML = '<h3>Rental Date</h3>';
+		            cell2.innerHTML = '<h3>Title</h3>';
+		            cell3.innerHTML = '<h3>Genre</h3>';
+		            cell4.innerHTML = '<h3>Rate</h3>';
+		            cell5.innerHTML = '<h3>Returned</h3>';
+		            cell6.innerHTML = '<h3>Payment</h3>';
+		            cell7.innerHTML = '<h3>Customer</h3>';
+
+
+		        for (i =0; i<logs.length; i+=1)  {
+		            var row = document.getElementById("table").insertRow();
+		            cell0 = row.insertCell(0);
+		            cell1 = row.insertCell(1);
+		            cell2 = row.insertCell(2);
+		            cell3 = row.insertCell(3);
+		            cell4 = row.insertCell(4);
+		            cell5 = row.insertCell(5);
+		            cell6 = row.insertCell(6);
+		            cell7 = row.insertCell(7);
+		            cell0.innerHTML = logs[i][0];
+		            cell1.innerHTML = logs[i][1];
+		            cell2.innerHTML = logs[i][2];
+		            cell3.innerHTML = logs[i][3];
+		            cell4.innerHTML = logs[i][4];
+		            cell5.innerHTML = logs[i][5];
+		            cell6.innerHTML = logs[i][6];
+		            cell7.innerHTML = '<input style="margin-left:15px;" type="button" value="' + String(logs[i][7]) + '" onclick="window.open(\'/customer/' + String(logs[i][7]) + '\')" />'
+
+		        }
+
+		        console.log('table created');
+		</script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+
+  </body>
+
+</html>

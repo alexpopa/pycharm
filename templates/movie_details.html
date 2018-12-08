@@ -1,0 +1,12 @@
+<div id = 'res' style="margin-top:15px;"></div>
+<script>
+    info = {{info|safe}}
+    temp=''
+    temp += '<b>Movie: </b>' + info[0] +'</br>'
+    temp += '<b>Genre: </b>' + info[2] +'</br>'
+    temp += '<b>Description: </b>' + info[1] +'</br>'
+    temp += '<b>Year: </b>' + info[3] +'</br>'
+    temp += '<b>Rating: </b>' + info[4] +'</br>'
+    temp += '<b>Rental Rate: </b>' + info[5] +'</br>'
+    document.getElementById("res").innerHTML = temp
+</script>
